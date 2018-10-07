@@ -1,3 +1,4 @@
+#!/usr/bin/node
 const ArgumentParser = require('./Args/ArgumentParser');
 const ArgumentRunner = require('./Args/ArgumentRunner');
 
