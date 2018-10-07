@@ -14,15 +14,11 @@ module.exports = async (dbName, paths) => {
         const collection = getCollectionName(path);
 
         // Write whats happening to stdout with fancy colours.
-        process.stdout.write(`Reading data from ${path}...`);
+        colors.write(`Reading data from ${path}...`);
         readline.cursorTo(process.stdout, 0);
-        colors.green();
-        process.stdout.write('✔ ');
-        colors.reset();
-        process.stdout.write(`Reading data from ${path}... `);
-        colors.green();
-        process.stdout.write('DONE\n');
-        colors.reset();
+        colors.green('✔ ');
+        colors.write(`Reading data from ${path}... `);
+        colors.green('DONE\n');
 
         // Reads the data from the file.
         const data = readFileSync(path).toString('utf8');
@@ -36,7 +32,7 @@ module.exports = async (dbName, paths) => {
         }
     });
 
-    process.stdout.write(`Seeding data...`);
+    colors.write(`Seeding data...`);
     // Seeds the data.
     await conn.execute(async db => {
         for (collection in seedData) {
@@ -47,12 +43,8 @@ module.exports = async (dbName, paths) => {
     await conn.close();
 
     // More fancy colours.
-    colors.green();
     readline.cursorTo(process.stdout, 0);
-    process.stdout.write('✔ ');
-    colors.reset();
-    process.stdout.write('Seeding data... ');
-    colors.green();
-    process.stdout.write('DONE\n');
-    colors.reset();
+    colors.green('✔ ');
+    colors.write('Seeding data... ');
+    colors.green('DONE\n');
 };
