@@ -11,7 +11,10 @@ class Connection {
 
     // Creates a connection to the db.
     async connect() {
-        this._connection = await MongoClient.connect(this._connectionString);
+        this._connection = await MongoClient.connect(
+            this._connectionString,
+            { useNewUrlParser: true },
+        );
     }
 
     // Wrapper to execute Mongo code.
