@@ -1,3 +1,9 @@
+/**
+ * This is the config file for available commands.
+ *
+ * If the type of a command has a value associated with it, it expects it immediately after an =.
+ * e.g --name="example"
+ */
 module.exports = [
     {
         name: 'seedByFile',

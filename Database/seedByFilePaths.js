@@ -6,7 +6,9 @@ module.exports = async (dbName, paths) => {
     const conn = new Connection(dbName);
     const seedData = {};
 
+    // For each file path.
     paths.forEach(path => {
+        // Create a collection name from the file path.
         const collection = getCollectionName(path);
 
         // Reads the data from the file.
@@ -27,5 +29,6 @@ module.exports = async (dbName, paths) => {
             db.collection(collection).insertMany(seedData[collection]);
         }
     });
+    // Closes the connection, to make sure we can exit the process.
     await conn.close();
 };
