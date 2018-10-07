@@ -21,5 +21,18 @@ module.exports = [
         name: 'dbName',
         flags: '--name|-N',
         type: 'string',
+        default: 'mongo-seeder',
+    },
+    {
+        name: 'host',
+        flags: '--host|-H',
+        type: 'string',
+        default: 'localhost',
+    },
+    {
+        name: 'port',
+        flags: '--port|-P',
+        type: 'string',
+        default: '27017',
     },
 ];

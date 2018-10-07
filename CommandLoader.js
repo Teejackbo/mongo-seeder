@@ -1,3 +1,4 @@
+const CommandContainer = require('./CommandContainer');
 const commands = require('./commands');
 
 /**
@@ -6,6 +7,7 @@ const commands = require('./commands');
 class CommandParser {
     constructor() {
         this._commands = this._loadCommands();
+        CommandContainer.commands = this._commands;
     }
 
     /**

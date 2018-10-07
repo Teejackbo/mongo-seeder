@@ -4,8 +4,8 @@ const Connection = require('./Connection');
 const getCollectionName = require('../util/getCollectionName');
 const colors = require('../util/colors');
 
-module.exports = async (dbName, paths) => {
-    const conn = new Connection(dbName);
+module.exports = async paths => {
+    const conn = new Connection();
     const seedData = {};
 
     // For each file path.

@@ -1,6 +1,8 @@
+const ArgumentContainer = require('./ArgumentContainer');
+
 class ArgumentRunner {
-    constructor(args) {
-        this._args = args;
+    constructor() {
+        this._args = ArgumentContainer.args;
     }
 
     /**

@@ -1,12 +1,16 @@
 const { MongoClient } = require('mongodb');
+const ArgumentContainer = require('../args/ArgumentContainer');
 
 /**
  * Connects to Mongo.
  */
 class Connection {
-    constructor(dbName, url = 'mongodb://localhost:27017/') {
+    constructor() {
+        const dbName = ArgumentContainer.valueOrDefault('dbName');
+        const host = ArgumentContainer.valueOrDefault('host');
+        const port = ArgumentContainer.valueOrDefault('port');
         this._dbName = dbName;
-        this._connectionString = url + dbName;
+        this._connectionString = `mongodb://${host}:${port}/${dbName}`;
     }
 
     // Creates a connection to the db.

@@ -26,6 +26,10 @@ class Argument {
     name() {
         return this._command.name;
     }
+
+    get flags() {
+        return this._command.flags;
+    }
 }
 
 module.exports = Argument;
