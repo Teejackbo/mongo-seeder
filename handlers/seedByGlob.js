@@ -1,5 +1,5 @@
 const glob = require('glob-promise');
-const seedByFilePaths = require('../Database/seedByFilePaths');
+const seedByFilePaths = require('../database/seedByFilePaths');
 
 module.exports = async (arg, args) => {
     // Finds the db name from the list of args.

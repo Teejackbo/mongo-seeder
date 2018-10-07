@@ -9,13 +9,13 @@ module.exports = [
         name: 'seedByFile',
         flags: '--files|-F',
         type: 'list',
-        handler: require('./Handlers/seedByFile'),
+        handler: require('./handlers/seedByFile'),
     },
     {
         name: 'seedByGlob',
         flags: '--glob|-G',
         type: 'glob',
-        handler: require('./Handlers/seedByGlob'),
+        handler: require('./handlers/seedByGlob'),
     },
     {
         name: 'dbName',

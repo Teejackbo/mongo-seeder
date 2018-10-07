@@ -1,6 +1,5 @@
 const { readFileSync } = require('fs');
 const readline = require('readline');
-const chalk = require('chalk');
 const Connection = require('./Connection');
 const getCollectionName = require('../util/getCollectionName');
 const colors = require('../util/colors');

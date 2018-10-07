@@ -1,6 +1,6 @@
 #!/usr/bin/node
-const ArgumentParser = require('./Args/ArgumentParser');
-const ArgumentRunner = require('./Args/ArgumentRunner');
+const ArgumentParser = require('./args/ArgumentParser');
+const ArgumentRunner = require('./args/ArgumentRunner');
 
 // Get process arguments
 const [nodePath, filePath, ...args] = process.argv;
