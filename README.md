@@ -18,9 +18,11 @@ mongo-seeder -N=another_example --files="data/file1.json,data/file2.json"
 
 ## Options
 
--   `--name`/`-N` - This flag specifies the name of the database to seed.
+-   `--name`/`-N` - This flag specifies the name of the database to seed. Defaults to `mongo-seeder`.
 -   `--files`/`-F` - This flag specifies files to seed the database with. Expects a comma separated list.
 -   `--glob`/`-G` - This flag specifies a glob to use to seed the database.
+-   `--host`/`-H` - This flag specifies the host of the database. Defaults to localhost.
+-   `--port`/`-P` - This flag specifies the port to use to connect to the database. Defaults to 27017.
 
 ## Filenames
 
