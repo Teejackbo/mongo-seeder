@@ -1,4 +1,4 @@
-# Mongo Seeder
+# MongoDB Seeder
 
 ## Overview
 
