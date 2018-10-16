@@ -1,6 +1,6 @@
 {
     "name": "mongodb-seeder",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "",
     "main": "index.js",
     "scripts": {
@@ -18,6 +18,6 @@
         "mongodb": "^3.1.6"
     },
     "bin": {
-        "mongodb-seeder": "./index.js"
+        "mongodb-seeder": "index.js"
     }
 }
