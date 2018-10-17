@@ -1,6 +1,6 @@
 {
     "name": "mongodb-seeder",
-    "version": "1.0.6",
+    "version": "1.1.6",
     "description": "",
     "main": "seeder.js",
     "scripts": {
@@ -15,7 +15,8 @@
     "dependencies": {
         "glob": "^7.1.3",
         "glob-promise": "^3.4.0",
-        "mongodb": "^3.1.6"
+        "mongodb": "^3.1.6",
+        "node-uuid": "^1.4.8"
     },
     "bin": {
         "mongodb-seeder": "seeder"

@@ -3,6 +3,7 @@ const readline = require('readline');
 const Connection = require('./Connection');
 const getCollectionName = require('../util/getCollectionName');
 const colors = require('../util/colors');
+const convertTypes = require('./convertTypes');
 
 module.exports = async paths => {
     const conn = new Connection();
@@ -25,10 +26,11 @@ module.exports = async paths => {
         if (data === '') throw new Error(`${path} contains no data.`);
 
         // Organises the data ready for seeding.
+        const parsed = convertTypes(JSON.parse(data));
         if (seedData[collection]) {
-            seedData[collection].push(JSON.parse(data));
+            seedData[collection].push(parsed);
         } else {
-            seedData[collection] = [JSON.parse(data)];
+            seedData[collection] = [parsed];
         }
     });
 
