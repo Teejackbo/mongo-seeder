@@ -1,5 +1,16 @@
-const { v4 } = require('node-uuid');
+const uuid = require('uuid-mongodb');
 const { Binary } = require('mongodb');
+
+const convertToBuffer = uuid => {
+    const b = new Buffer(16);
+    const split = uuid.split('-').join('');
+    const charArray = split.match(/.{1,2}/g);
+    charArray.forEach((char, i) => b.writeUInt8(
+        parseInt(char, 16),
+        i
+    ));
+    return b;
+}
 
 // This is disgusting but it works.
 const convertType = item => {
@@ -9,13 +20,15 @@ const convertType = item => {
         const [type, value] = item.split('|');
         // Create a buffer to convert to binary.
         if (type === 'uuid') {
-            let buff = new Buffer(16);
             if (value) {
-                buff = Buffer.from(value)
+                const b = convertToBuffer(value);
+                const bin = new Binary(null, Binary.SUBTYPE_UUID_OLD);
+                bin.write(b);
+                return bin;
             }
             // Create an ID and convert to binary.
-            const uuid = v4(null, buff);
-            return Binary(uuid, Binary.SUBTYPE_UUID_OLD);
+            const id = uuid.v4();
+            return id;
         }
 
         // If it is a date then treat is as such.
