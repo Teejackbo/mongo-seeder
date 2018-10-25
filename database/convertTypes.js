@@ -29,6 +29,7 @@ const convertToNuuid = uuid => {
 
 // This is disgusting but it works.
 const convertType = item => {
+    console.log(item);
     // If it is a string (checks in case it is an object for recursion)
     if (typeof item === 'string') {
         // Split it by the pipe to get the type and the value.
@@ -51,6 +52,8 @@ const convertType = item => {
             return date;
         }
     }
+
+    if (item === null) return null;
 
     // Works recursively, if it is an object then runs through again.
     if (typeof item === 'object') return iterateThrough(item);
