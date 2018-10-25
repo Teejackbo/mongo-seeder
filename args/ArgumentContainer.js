@@ -1,4 +1,4 @@
-const CommandContainer = require('../CommandContainer');
+const CommandContainer = require('./CommandContainer');
 
 let _args = [];
 

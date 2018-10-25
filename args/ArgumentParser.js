@@ -1,4 +1,4 @@
-const CommandLoader = require('../CommandLoader');
+const CommandParser = require('./CommandParser');
 const Argument = require('./Argument');
 
 /**
@@ -6,7 +6,7 @@ const Argument = require('./Argument');
  */
 class ArgumentParser {
     constructor(args) {
-        this._commandLoader = new CommandLoader();
+        this._commandParser = new CommandParser();
         this._args = this._parse(args);
     }
 
@@ -18,10 +18,10 @@ class ArgumentParser {
         const parsed = args.map(arg => {
             if (arg.includes('=')) {
                 const [flag, value] = arg.split('=');
-                const command = this._commandLoader.getCommand(flag);
+                const command = this._commandParser.getCommand(flag);
                 return new Argument(command, value);
             } else {
-                const command = this._commandLoader.getCommand(arg);
+                const command = this._commandParser.getCommand(arg);
                 return new Argument(command, null);
             }
         });
