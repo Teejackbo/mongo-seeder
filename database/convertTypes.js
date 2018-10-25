@@ -1,15 +1,30 @@
 const uuid = require('uuid-mongodb');
 const { Binary } = require('mongodb');
 
-const convertToBuffer = uuid => {
+// Write the first 16 bytes backwards if it is a NUUID.
+const convertToBuffer = (uuid, type) => {
     const b = new Buffer(16);
+    if (type === 'nuuid') uuid = convertToNuuid(uuid);
     const split = uuid.split('-').join('');
     const charArray = split.match(/.{1,2}/g);
     charArray.forEach((char, i) => b.writeUInt8(
         parseInt(char, 16),
         i
     ));
+
     return b;
+}
+
+const convertToNuuid = uuid => {
+    const split = uuid.split('-');
+    const converted = split.map((section, i) => {
+        if (i < 3) {
+            const charArray = section.match(/.{1,2}/g);
+            return charArray.reverse().join('');
+        }
+        return section;
+    });
+    return converted.join('-');
 }
 
 // This is disgusting but it works.
@@ -19,12 +34,10 @@ const convertType = item => {
         // Split it by the pipe to get the type and the value.
         const [type, value] = item.split('|');
         // Create a buffer to convert to binary.
-        if (type === 'uuid') {
+        if (type === 'luuid' || type === 'nuuid') {
             if (value) {
-                const b = convertToBuffer(value);
-                const bin = new Binary(null, Binary.SUBTYPE_UUID_OLD);
-                bin.write(b);
-                return bin;
+                const b = convertToBuffer(value, type);
+                return new Binary(b, Binary.SUBTYPE_UUID_OLD);
             }
             // Create an ID and convert to binary.
             const id = uuid.v4();
