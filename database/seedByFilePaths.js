@@ -1,7 +1,7 @@
 const readline = require('readline');
 const Connection = require('./Connection');
-const colors = require('../util/colors');
-const parseData = require('../util/parseData');
+const colors = require('../utils/colors');
+const parseData = require('../utils/parseData');
 
 module.exports = async paths => {
     const conn = new Connection();

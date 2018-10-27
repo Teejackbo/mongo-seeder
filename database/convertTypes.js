@@ -1,6 +1,6 @@
 const uuid = require('uuid-mongodb');
 const { Binary } = require('mongodb');
-const convertUuidToBuffer = require('../util/convertUuidToBuffer');
+const convertUuidToBuffer = require('../utils/convertUuidToBuffer');
 
 const convertType = item => {
     if (item === null) return null;
